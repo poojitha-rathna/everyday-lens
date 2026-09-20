@@ -1,4 +1,4 @@
-export function PrivacyBanner({ note, detected = false }: { note?: string; detected?: boolean }) {
+export function PrivacyBanner({ note, detected = false }: { note?: string | undefined; detected?: boolean }) {
   return (
     <div
       role="note"
