@@ -131,10 +131,11 @@ let rotation = 0;
 
 export function mockAnalyze(fileName: string): AnalysisResult {
   for (const [pattern, key] of KEYWORDS) {
-    if (pattern.test(fileName)) return TEMPLATES[key];
+    const hit = TEMPLATES[key];
+    if (hit && pattern.test(fileName)) return hit;
   }
-  const keys = Object.keys(TEMPLATES);
-  const picked = TEMPLATES[keys[rotation % keys.length]];
+  const values = Object.values(TEMPLATES);
+  const picked = values[rotation % values.length] ?? values[0]!;
   rotation += 1;
   return picked;
 }
