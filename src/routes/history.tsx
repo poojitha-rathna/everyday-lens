@@ -85,6 +85,11 @@ function HistoryPage() {
                   </div>
                   <h2 className="mt-3 font-display text-xl font-bold tracking-tight">{item.response.result.objectName}</h2>
                   <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">{item.response.result.summary}</p>
+                  {item.response.result.extractedText.length > 0 && (
+                    <p className="mt-2 line-clamp-2 rounded-md bg-muted/60 px-2.5 py-1.5 font-mono text-[11px] text-muted-foreground">
+                      {item.response.result.extractedText.slice(0, 3).join(" · ")}
+                    </p>
+                  )}
                   <p className="mt-3 font-mono text-[11px] text-muted-foreground">
                     {formatDistanceToNow(new Date(item.createdAt), { addSuffix: true })}
                   </p>
